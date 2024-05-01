@@ -1,0 +1,81 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A scatterplot",
+    "data": {
+        "url": "Daily_all_data.csv"
+    },
+    "transform": [
+        {
+            "filter": "datum['Loc Type'] == 'SF Screenline'"
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "rule",
+                "color": "grey",
+                "strokeWidth": 3
+            },
+            "encoding": {
+                "y": {
+                    "datum": 0
+                }
+            }
+        },
+        {
+            "mark": "point",
+            "encoding": {
+                "x": {
+                    "field": "Observed Volume",
+                    "type": "quantitative"
+                },
+                "y": {
+                    "field": "Percent Errors",
+                    "type": "quantitative"
+                },
+                "tooltip": [
+                    {
+                        "field": "Observed Volume",
+                        "type": "quantitative",
+                        "title": "Observed Volume"
+                    },
+                    {
+                        "field": "Percent Errors",
+                        "type": "quantitative",
+                        "title": "Percent Errors"
+                    },
+                    {
+                        "field": "Loc Type",
+                        "type": "nominal",
+                        "title": "Loc Type"
+                    },
+                    {
+                        "field": "A",
+                        "type": "nominal",
+                        "title": "A"
+                    },
+                    {
+                        "field": "B",
+                        "type": "nominal",
+                        "title": "B"
+                    },
+                    {
+                        "field": "Location",
+                        "type": "nominal",
+                        "title": "Location"
+                    },
+                    {
+                        "field": "Road",
+                        "type": "nominal",
+                        "title": "Road"
+                    },
+                    {
+                        "field": "Dir",
+                        "type": "nominal",
+                        "title": "Dir"
+                    }
+                ]
+            }
+        }
+    ]
+}

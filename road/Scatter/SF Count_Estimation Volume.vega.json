@@ -1,0 +1,180 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A scatterplot with a regression line",
+    "data": {
+        "url": "Daily_all_data.csv"
+    },
+    "transform": [
+        {
+            "filter": "datum['Loc Type'] == 'SF Count'"
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "rule",
+                "color": "grey",
+                "strokeWidth": 3
+            },
+            "encoding": {
+                "y": {
+                    "datum": 0
+                }
+            }
+        },
+        {
+            "mark": "point",
+            "encoding": {
+                "x": {
+                    "field": "Observed Volume",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            54085.00562
+                        ]
+                    }
+                },
+                "y": {
+                    "field": "Estimated Volume",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            54085.00562
+                        ]
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "Observed Volume",
+                        "type": "quantitative",
+                        "title": "Observed Volume"
+                    },
+                    {
+                        "field": "Estimated Volume",
+                        "type": "quantitative",
+                        "title": "Estimated Volume"
+                    },
+                    {
+                        "field": "Loc Type",
+                        "type": "nominal",
+                        "title": "Loc Type"
+                    },
+                    {
+                        "field": "A",
+                        "type": "nominal",
+                        "title": "A"
+                    },
+                    {
+                        "field": "B",
+                        "type": "nominal",
+                        "title": "B"
+                    },
+                    {
+                        "field": "Location",
+                        "type": "nominal",
+                        "title": "Location"
+                    },
+                    {
+                        "field": "Road",
+                        "type": "nominal",
+                        "title": "Road"
+                    },
+                    {
+                        "field": "Dir",
+                        "type": "nominal",
+                        "title": "Dir"
+                    }
+                ]
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "baseline": "bottom",
+                "dx": 5,
+                "dy": -5
+            },
+            "data": {
+                "values": [
+                    {
+                        "text": "y = 1.29x + -415.89"
+                    }
+                ]
+            },
+            "encoding": {
+                "x": {
+                    "value": 0
+                },
+                "y": {
+                    "value": 0
+                },
+                "text": {
+                    "field": "text",
+                    "type": "nominal"
+                },
+                "color": {
+                    "value": "red"
+                }
+            }
+        },
+        {
+            "mark": "line",
+            "data": {
+                "values": [
+                    {
+                        "Observed Volume": 43.5,
+                        "Estimated Volume": 43.5
+                    },
+                    {
+                        "Observed Volume": 48518.333333333314,
+                        "Estimated Volume": 48518.333333333314
+                    }
+                ]
+            },
+            "encoding": {
+                "x": {
+                    "field": "Observed Volume",
+                    "type": "quantitative"
+                },
+                "y": {
+                    "field": "Estimated Volume",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "value": "blue"
+                }
+            }
+        },
+        {
+            "mark": "line",
+            "data": {
+                "values": [
+                    {
+                        "Observed Volume": 43.5,
+                        "Estimated Volume": -359.9018367066941
+                    },
+                    {
+                        "Observed Volume": 48518.333333333314,
+                        "Estimated Volume": 62027.4930663778
+                    }
+                ]
+            },
+            "encoding": {
+                "x": {
+                    "field": "Observed Volume",
+                    "type": "quantitative"
+                },
+                "y": {
+                    "field": "Estimated Volume",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "value": "red"
+                }
+            }
+        }
+    ]
+}
