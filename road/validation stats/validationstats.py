@@ -176,7 +176,7 @@ for period, df in time_period_dfs.items():
     group['percent_rmse'] = group['RMSE'] * 100
     percent_rmse_df[period] = group['percent_rmse']
 
-    relative_error = (sum_estimated - sum_observed) / sum_observed
+    relative_error = (sum_estimated - sum_observed) / sum_observed * 100
     relative_error_df[period] = relative_error
     
     est_obs_ratio = sum_estimated / sum_observed
@@ -263,7 +263,7 @@ est_obs_ratio_df = reorder_dataframe(est_obs_ratio_df, group_var)
 count_df = reorder_dataframe(count_df, group_var)
 
 percent_rmse_df = percent_rmse_df.round(1)
-relative_error_df = relative_error_df.round(1)
+relative_error_df = relative_error_df.round(3)
 est_obs_ratio_df = est_obs_ratio_df.round(3)
 
 group_var_no_spaces = group_var.replace(" ", "").lower()
